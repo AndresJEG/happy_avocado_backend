@@ -8,7 +8,11 @@ public final class UtilFecha {
 
     private UtilFecha() { super(); }
 
+    public static LocalDate obtenerValorDefecto(final LocalDate fecha, final LocalDate valorDefecto) {
+        return UtilObjeto.obtenerValorDefecto(fecha, valorDefecto);
+    }
+
     public static LocalDate obtenerValorDefecto(final LocalDate fecha) {
-        return UtilObjeto.obtenerValorDefecto(fecha, FECHA_DEFECTO);
+        return obtenerValorDefecto(fecha, FECHA_DEFECTO);
     }
 }

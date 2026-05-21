@@ -6,22 +6,26 @@ import java.util.UUID;
 
 public final class UtilId {
 
-    public static final UUID UUID_DEFECTO = new UUID(0L, 0L);
+    public static final UUID VALOR_DEFECTO = UUID.fromString("00000000-0000-0000-0000-000000000000");
 
-    private UtilId() { super(); }
-
-    public static UUID obtenerValorDefecto(final UUID id) {
-        return UtilObjeto.obtenerValorDefecto(id, UUID_DEFECTO);
+    private UtilId() {
+        super();
     }
 
-    public static boolean esIdValido(final UUID id) {
-        return !UtilObjeto.esNula(id) && !id.equals(UUID_DEFECTO);
+    public static boolean esNulo(final UUID uuid) {
+        return UtilObjeto.esNula(uuid);
     }
 
-    public static void validarIdValido(final UUID id, final String mensajeError) {
-        if (!esIdValido(id)) {
-            throw new HappyAvocadoExcepcion(mensajeError);
-        }
+    public static UUID obtenerValorDefecto(final UUID uuid) {
+        return UtilObjeto.obtenerValorDefecto(uuid, VALOR_DEFECTO);
+    }
+
+    public static UUID obtenerValorDefecto(final UUID uuid, final UUID valorDefecto) {
+        return UtilObjeto.obtenerValorDefecto(uuid, valorDefecto);
+    }
+
+    public static UUID generarNuevoUUID() {
+        return UUID.randomUUID();
     }
 
 }
